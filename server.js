@@ -11,8 +11,7 @@ const startApp = async () => {
   try {
     await createDatabase();
 
-    await sequelize.authenticate();
-
+    await sequelize.connectionManager.getConnection();
     console.log("Database connected");
 
     app.listen(SERVER_PORT, () => {

@@ -16,7 +16,7 @@ const validateAddDog = catchAsync(async (req, res, next) => {
   if (error) return next(BadRequest(error.details[0].message));
 
   const existedDog = await Dog.findAll({ where: { name: req.body.name } });
-  console.log(existedDog);
+
   if (existedDog.length > 0) {
     return next(Conflict("This Dog name is already taken!"));
   }
